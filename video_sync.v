@@ -10,16 +10,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module VideoSync(
-				input CLOCK,
-				// Output to the DAC
-				output PIXEL_CLOCK,
-				output V_SYNC,
-				output H_SYNC,
-				output C_SYNC, // Connect to GPIO
-				output VGA_BLANK,
-				// Output to other logic
-				output H_COUNTER,
-				output V_COUNTER);
+			input CLOCK,
+			// Output to the DAC
+			output PIXEL_CLOCK,
+			output V_SYNC,
+			output H_SYNC,
+			output C_SYNC, // Connect to GPIO
+			output VGA_BLANK,
+			// Output to other logic
+			output H_COUNTER,
+			output V_COUNTER);
 
 	// HSYNC PARAMETERS //
 		// Visible pixel count
