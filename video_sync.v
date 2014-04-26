@@ -16,7 +16,6 @@ module VideoSync(
 			output V_SYNC,
 			output H_SYNC,
 			output C_SYNC, // Connect to GPIO
-			output VGA_BLANK,
 			// Output to other logic
 			output reg [8:0] H_COUNTER,
 			output reg [8:0] V_COUNTER);
@@ -80,5 +79,4 @@ module VideoSync(
 	assign V_SYNC = (V_COUNTER < V_FP_EDGE || V_COUNTER > V_SYNC_EDGE);
 	assign H_SYNC = (H_COUNTER < H_FP_EDGE || H_COUNTER > H_SYNC_EDGE);
 	assign C_SYNC = !(H_SYNC ^ V_SYNC);
-	assign VGA_BLANK = 1; // Disable VGA output blanking.
 endmodule
