@@ -18,8 +18,8 @@ module VideoSync(
 			output C_SYNC, // Connect to GPIO
 			output VGA_BLANK,
 			// Output to other logic
-			output H_COUNTER,
-			output V_COUNTER);
+			output reg [8:0] H_COUNTER,
+			output reg [8:0] V_COUNTER);
 
 	// HSYNC PARAMETERS //
 		// Visible pixel count
@@ -60,8 +60,6 @@ module VideoSync(
 	// End Pixel Clock Generator //
 	
 	// Scan Location Tracker //
-		reg [8:0] H_COUNTER = 0;
-		reg [8:0] V_COUNTER = 0;
 		always @(posedge PIXEL_CLOCK) begin
 			H_COUNTER <= H_COUNTER + 1;
 			if(H_COUNTER == H_PERIOD - 1) begin
@@ -79,6 +77,6 @@ module VideoSync(
 	// Output synchronization signals
 	assign V_SYNC = (V_COUNTER < V_FP_EDGE || V_COUNTER > V_SYNC_EDGE);
 	assign H_SYNC = (H_COUNTER < H_FP_EDGE || H_COUNTER > H_SYNC_EDGE);
-	assign COMP_SYNC = !(H_SYNC ^ V_SYNC);
+	assign C_SYNC = !(H_SYNC ^ V_SYNC);
 	assign VGA_BLANK = 1; // Disable VGA output blanking.
 endmodule
