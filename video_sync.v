@@ -25,17 +25,17 @@ module VideoSync(
 		// Visible pixel count
 		parameter H_PIXELS = 320;
 		// Duration
-		parameter H_FP_DURATION = 4;
-		parameter H_SYNC_DURATION	= 48;
-		parameter H_BP_DURATION = 28;
+		parameter H_FP_DURATION   = 4;
+		parameter H_SYNC_DURATION = 48;
+		parameter H_BP_DURATION   = 28;
 	
 	// VSYNC PARAMETERS //
 		// Visible pixel count
 		parameter V_PIXELS = 240;
 		// Duration
-		parameter V_FP_DURATION = 1;
+		parameter V_FP_DURATION   = 1;
 		parameter V_SYNC_DURATION = 15;
-		parameter V_BP_DURATION = 4;
+		parameter V_BP_DURATION   = 4;
 
 	// HSYNC/VSYNC HELPER PARAMETERS //
 		// Edge offset
