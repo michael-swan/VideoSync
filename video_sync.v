@@ -4,9 +4,9 @@
 // Developed by Michael Swan
 //
 // Current parameters produce a signal with the following characteristics:
-// Resolution: 320x240
-// Horizontal Sync Frequency: 15.5 Khz
-// Vertical Sync Frequency: 60 Hz
+// 	Resolution: 320x240
+// 	Horizontal Sync Frequency: 15.5 Khz
+// 	Vertical Sync Frequency: 60 Hz
 //////////////////////////////////////////////////////////////////////////////////
 
 module VideoSync(
@@ -20,7 +20,7 @@ module VideoSync(
 			// Output to other logic
 			output reg [8:0] H_COUNTER,
 			output reg [8:0] V_COUNTER);
-
+	
 	// HSYNC PARAMETERS //
 		// Visible pixel count
 		parameter H_PIXELS = 320;
@@ -28,12 +28,6 @@ module VideoSync(
 		parameter H_FP_DURATION = 4;
 		parameter H_SYNC_DURATION	= 48;
 		parameter H_BP_DURATION = 28;
-		// Edge offset
-		parameter H_FP_EDGE = H_FP_DURATION;
-		parameter H_SYNC_EDGE = H_FP_EDGE + H_SYNC_DURATION;
-		parameter H_BP_EDGE = H_SYNC_EDGE + H_BP_DURATION;
-		// Signal period
-		parameter H_PERIOD = H_BP_EDGE + H_PIXELS;
 	
 	// VSYNC PARAMETERS //
 		// Visible pixel count
@@ -42,6 +36,14 @@ module VideoSync(
 		parameter V_FP_DURATION = 1;
 		parameter V_SYNC_DURATION = 15;
 		parameter V_BP_DURATION = 4;
+
+	// HSYNC/VSYNC HELPER PARAMETERS //
+		// Edge offset
+		parameter H_FP_EDGE = H_FP_DURATION;
+		parameter H_SYNC_EDGE = H_FP_EDGE + H_SYNC_DURATION;
+		parameter H_BP_EDGE = H_SYNC_EDGE + H_BP_DURATION;
+		// Signal period
+		parameter H_PERIOD = H_BP_EDGE + H_PIXELS;
 		// Edge offset
 		parameter V_FP_EDGE = V_FP_DURATION;
 		parameter V_SYNC_EDGE = V_FP_EDGE + V_SYNC_DURATION;
